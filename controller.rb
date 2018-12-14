@@ -5,12 +5,12 @@ class Controller
   end
 
   def start
-    @thread = Thread.new do
+    @thread = Thread.new {
       until @stop
-        @logger.debug 'running controller loop'
+        @logger.debug "running controller loop"
         sleep 1
       end
-    end
+    }
   end
 
   def stop

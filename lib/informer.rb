@@ -1,6 +1,5 @@
 class Informer
   def initialize(client, resync_period)
-
   end
 
   def start

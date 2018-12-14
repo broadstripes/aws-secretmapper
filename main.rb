@@ -1,21 +1,20 @@
-require 'logger'
-require 'json'
-require 'typhoeus'
-require_relative './controller'
-require_relative './lib/client'
-require_relative './lib/config'
-
+require "logger"
+require "json"
+require "typhoeus"
+require_relative "./controller"
+require_relative "./lib/client"
+require_relative "./lib/config"
 
 logger = Logger.new(
   STDOUT,
-  progname: 'aws-parameter-store-secrets-controller',
+  progname: "aws-parameter-store-secrets-controller",
   level: Config.fetch(:log_level, "DEBUG")
 )
-logger.info 'starting up'
+logger.info "starting up"
 
 # handle shutting down immediately on second signal?
 signals = Queue.new
-%w(TERM INT).each do |sig|
+%w[TERM INT].each do |sig|
   Signal.trap(sig) { signals << sig }
 end
 
@@ -32,6 +31,6 @@ controller.start
 sig = signals.pop
 logger.info "caught signal #{sig}, shutting down"
 controller.stop
-logger.info 'bye'
+logger.info "bye"
 
 exit 0

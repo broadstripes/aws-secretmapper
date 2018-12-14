@@ -1,11 +1,11 @@
 class Client
-  HOST = 'localhost'
-  PORT = '8001'
+  HOST = "localhost"
+  PORT = "8001"
 
   private
 
-  #req = Typhoeus::Request.new("localhost:8001/api/v1/watch/pods")
-  #mappings_resp = Faraday.get('http://localhost:8001/apis/aws-parameter-store-secrets-controller.broadstripes.com/v1/parametermappings').body
+  # req = Typhoeus::Request.new("localhost:8001/api/v1/watch/pods")
+  # mappings_resp = Faraday.get('http://localhost:8001/apis/aws-parameter-store-secrets-controller.broadstripes.com/v1/parametermappings').body
 
   def consume_watch(request, queue)
     buffer = ""
