@@ -2,8 +2,8 @@
 
 source "https://rubygems.org"
 
-gem "typhoeus", "~> 1.3"
+gem "sinatra", "~> 2.0"
 
-group :development do
-  gem "pry"
-end
+gem "sinatra-contrib", "~> 2.0"
+
+gem "thin", "~> 1.7"
