@@ -1,3 +1,5 @@
+#!/usr/bin/ruby
+
 require "json"
 require "sinatra"
 require "sinatra/json"
