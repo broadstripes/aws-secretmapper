@@ -48,7 +48,12 @@ class Syncer
         apiVersion: "v1",
         kind: "Secret",
         metadata: {name: @parent["metadata"]["name"]},
-        data: params.map {|param| [param.name, Base64.strict_encode64(param.value)] }.to_h,
+        data: params.map { |param|
+          [
+            param.name.delete_prefix(@parent["spec"]["path"]),
+            Base64.strict_encode64(param.value),
+          ]
+        }.to_h,
       },
     ]
   end
