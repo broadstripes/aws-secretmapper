@@ -46,10 +46,7 @@ class Syncer
       {
         apiVersion: "v1",
         kind: "Secret",
-        metadata: {
-          name: @parent["metadata"]["name"],
-          labels: @parent["spec"]["selector"],
-        },
+        metadata: {name: @parent["metadata"]["name"]},
         spec: {
           data: params.map {|param| [param.name, param.value] }.to_h,
         },
