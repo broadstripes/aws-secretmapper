@@ -42,19 +42,18 @@ class Syncer
   end
 
   def desired_secrets
-    params = fetch_params
-    [
-      {
+    secret = {
         apiVersion: "v1",
         kind: "Secret",
         metadata: {name: @parent["metadata"]["name"]},
-        data: params.map { |param|
+        type: @parent["spec"].fetch("type", "Opaque"),
+        data: fetch_params.map { |param|
           [
-            param.name.delete_prefix(@parent["spec"]["path"]),
+            param.name.delete_prefix(@parent["spec"].fetch("path", "")),
             Base64.strict_encode64(param.value),
           ]
         }.to_h,
-      },
-    ]
+      }
+    [secret]
   end
 end
